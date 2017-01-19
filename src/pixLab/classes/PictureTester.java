@@ -27,6 +27,20 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testMirrorGull()
+  {
+	  Picture seagull = new Picture("seagull.jpg");
+	  seagull.explore();
+	  seagull.mirrorGull();
+	  seagull.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+	  Picture snowman = new Picture("snowman.jpg");
+	  snowman.explore();
+  }
+  
   public static void testMirrorVerticalRightToLeft()
   {
 	  Picture koala = new Picture("jenny-red.jpg");
@@ -35,6 +49,23 @@ public class PictureTester
 	  koala.explore();
 	  koala.zeroBlue();
 	  koala.explore();
+  }
+  
+  public static void testMirrorDiagonalTopRightToBottomLeft()
+  {
+	  Picture koala = new Picture("koala.jpg");
+	  koala.explore();
+	  koala.mirrorDiagonalTopRightToBottomLeft();
+	  koala.explore();
+  }
+  
+  public static void testMirrorDiagonalBottomRightToTopLeft()
+  {
+	  Picture koala = new Picture("koala.jpg");
+	  koala.explore();
+	  koala.mirrorDiagonalBottomRightToTopLeft();
+	  koala.explore();
+	  
   }
   
   public static void testMirrorHorizontalBottomToTop()
@@ -77,6 +108,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	//testMirrorDiagonalTopRightToBottomLeft();
+	//testMirrorDiagonalBottomRightToTopLeft();
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
@@ -86,14 +119,14 @@ public class PictureTester
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorVerticalRightToLeft();
-    testMirrorHorizontalBottomToTop();
+    //testMirrorHorizontalBottomToTop();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    //testEdgeDetection();
+	  testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
@@ -101,5 +134,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+	//testMirrorGull();
+	  testMirrorArms();
   }
 }

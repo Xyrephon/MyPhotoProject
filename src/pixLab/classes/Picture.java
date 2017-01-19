@@ -119,6 +119,48 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void mirrorDiagonalTopRightToBottomLeft()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel TopRightPixel = null;
+	  Pixel BottomLeftPixel = null;
+	  
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels[0].length; col++)
+		  {
+			  if (row != col && row < pixels[0].length && col < pixels.length)
+			  {
+				  TopRightPixel = pixels[row][col];
+				  BottomLeftPixel = pixels[col][row];
+				  BottomLeftPixel.setColor(TopRightPixel.getColor());
+			  }
+		  }
+	  }
+  }
+  
+  public void mirrorDiagonalBottomRightToTopLeft()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel TopLeftPixel = null;
+	  Pixel BottomRightPixel = null;
+	  int mirrorPoint = Math.min(pixels.length, pixels[0].length) - 1;
+	  
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels.length; col++)
+		  {
+			  if (row + col != mirrorPoint && col < pixels.length && row < pixels[0].length)
+			  {
+				  TopLeftPixel = pixels [row][col];
+				  BottomRightPixel = pixels[mirrorPoint-col][mirrorPoint-row];
+				  TopLeftPixel.setColor(BottomRightPixel.getColor());
+			  }
+		  }
+	  }
+	  
+  }
+  
   
   public void mirrorVerticalRightToLeft()
   {
@@ -201,6 +243,26 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void mirrorGull()
+  {
+	Pixel[][] pixels = this.getPixels2D();
+	Pixel left = null;
+	Pixel right = null;
+	int mirrorPoint = 400;
+	int count = 0;
+	
+	for (int row = 229; row < 344; row++)
+	{
+		for (int col = 234; col < 325; col++)
+		{
+			left = pixels[row][col];
+			right = pixels[row] [mirrorPoint - col + mirrorPoint];
+			right.setColor(left.getColor());
+		}
+	}
+		
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -267,11 +329,14 @@ public class Picture extends SimplePicture
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
         rightColor = rightPixel.getColor();
-        if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
+        if (leftPixel.colorDistance(rightColor) > edgeDist)
+        {
           leftPixel.setColor(Color.BLACK);
+        }
         else
+        {
           leftPixel.setColor(Color.WHITE);
+        }
       }
     }
   }
