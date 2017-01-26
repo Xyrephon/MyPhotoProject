@@ -39,6 +39,8 @@ public class PictureTester
   {
 	  Picture snowman = new Picture("snowman.jpg");
 	  snowman.explore();
+	  snowman.mirrorArms();
+	  snowman.explore();
   }
   
   public static void testMirrorVerticalRightToLeft()
@@ -101,40 +103,60 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testRandomize()
+  {
+	  Picture island = new Picture("CumberlandIsland.jpg");
+	  island.explore();
+	  island.fullRandomBlue();
+	  island.explore();
+	  island.fullRandomGreen();
+	  island.explore();
+	 
+  }
+  
+  public static void grayScale()
+  {
+	  Picture island = new Picture("CumberlandIsland.jpg");
+	  island.explore();
+	  island.Grayscale();
+	  island.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
-	//testMirrorDiagonalTopRightToBottomLeft();
-	//testMirrorDiagonalBottomRightToTopLeft();
-    //testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
-    //testNegate();
-    //testGrayscale();
-    //testFixUnderwater();
-    //testMirrorVertical();
-    //testMirrorVerticalRightToLeft();
-    //testMirrorHorizontalBottomToTop();
-    //testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
-    //testCopy();
-	  testEdgeDetection();
-    //testEdgeDetection2();
-    //testChromakey();
-    //testEncodeAndDecode();
-    //testGetCountRedOverValue(250);
-    //testSetRedToHalfValueInTopHalf();
-    //testClearBlueOverValue(200);
-    //testGetAverageForColumn(0);
-	//testMirrorGull();
+//     uncomment a call here to run a test
+//     and comment out the ones you don't want
+//     to run
+//	  testMirrorDiagonalTopRightToBottomLeft();
+//	  testMirrorDiagonalBottomRightToTopLeft();
+//    testZeroBlue();
+//    testKeepOnlyBlue();
+//    testKeepOnlyRed();
+//    testKeepOnlyGreen();
+//    testNegate();
+//    testGrayscale();
+//    testFixUnderwater();
+//    testMirrorVertical();
+//    testMirrorVerticalRightToLeft();
+//    testMirrorHorizontalBottomToTop();
+//    testMirrorTemple();
+//    testMirrorArms();
+//    testMirrorGull();
+//    testMirrorDiagonal();
+//    testCollage();
+//    testCopy();
+//	  testEdgeDetection();
+//    testEdgeDetection2();
+//    testChromakey();
+//    testEncodeAndDecode();
+//    testGetCountRedOverValue(250);
+//    testSetRedToHalfValueInTopHalf();
+//    testClearBlueOverValue(200);
+//    testGetAverageForColumn(0);
+//	  testMirrorGull();
 	  testMirrorArms();
+//	  testRandomize();
   }
 }

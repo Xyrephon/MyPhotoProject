@@ -263,6 +263,25 @@ public class Picture extends SimplePicture
 		
   }
   
+  public void mirrorArms()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel left = null;
+	  Pixel right = null;
+	  int mirrorPoint = 200;
+	  int count = 0;
+	  
+	  for (int row = 158; row < 200; row ++)
+	  {
+		  for (int col = 102; col < 300; col ++)
+		  {
+			  left = pixels[row][col];
+			  right = pixels[mirrorPoint - row + mirrorPoint][col];
+			  right.setColor(left.getColor());
+		  }
+	  }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -324,7 +343,7 @@ public class Picture extends SimplePicture
     for (int row = 0; row < pixels.length; row++)
     {
       for (int col = 0; 
-           col < pixels[0].length-1; col++)
+           col < pixels[0].length - 1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
@@ -339,6 +358,108 @@ public class Picture extends SimplePicture
         }
       }
     }
+  }
+  
+  public void edgeDetection2(int edgeDist)
+  {
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  Pixel [][] pixels = this.getPixels2D();
+	  Color rightColor = null;
+	  
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0;
+				  col < pixels[0].length -1; col++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = pixels[row+1][col+2];
+			  rightColor = rightPixel.getColor();
+			  if(leftPixel.colorDistance(rightColor) > edgeDist)
+			  {
+				  leftPixel.setColor(Color.WHITE);
+			  }
+			  else
+			  {
+				  leftPixel.setColor(Color.BLACK);
+			  }
+		  }
+	  }
+	  
+  }
+  
+  public void fullRandom()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  for (Pixel [] row : currentPicture)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			  int red = (int) (Math.random() * 256);
+			  int green = (int) (Math.random() * 256);
+			  int blue = (int) (Math.random() * 256);
+			  
+			  currentPixel.setColor(new Color(red, green, blue));
+		  }
+	  }
+  }
+  
+  
+  public void fullRandomRed()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  for (Pixel [] row : currentPicture)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			  int red = (int) (Math.random() * 256);
+			  
+			  currentPixel.setColor(new Color(red, currentPixel.getGreen(), currentPixel.getBlue()));
+		  }
+	  }
+  }
+  
+  public void fullRandomGreen()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  for (Pixel [] row : currentPicture)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			  int blue = (int) (Math.random() * 256);
+			  
+			  currentPixel.setColor(new Color(currentPixel.getRed(), currentPixel.getGreen(), blue));
+		  }
+	  }
+  }
+  
+  public void fullRandomBlue()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  for (Pixel [] row : currentPicture)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			  int green = (int) (Math.random() * 256);
+			  
+			  currentPixel.setColor(new Color(currentPixel.getRed(), green, currentPixel.getBlue()));
+		  }
+	  }
+  }
+  
+  public void Grayscale()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel [] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+		  {
+			  int avg = (int)((pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue()) / 3);
+			  pixelObj.setRed(avg);
+			  pixelObj.setBlue(avg);
+			  pixelObj.setGreen(avg);
+		  }
+	  }
   }
   
   
