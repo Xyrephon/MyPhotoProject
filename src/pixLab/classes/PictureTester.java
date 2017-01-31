@@ -129,6 +129,17 @@ public class PictureTester
 	  island.explore();
   }
   
+  public static void fiveFilterImage()
+  {
+	  Picture island = new Picture("CumberlandIsland.jpg");
+	  island.negateColor();
+	  island.zeroBlue();
+	  island.mirrorVertical();
+	  island.mirrorHorizontalTopToBottom();
+	  island.fullRandomRed();
+	  island.explore();
+  }
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -167,5 +178,6 @@ public class PictureTester
 //	  testMirrorArms();
 //	  testCollage();
 //	  testRandomize();
+	  fiveFilterImage();
   }
 }
