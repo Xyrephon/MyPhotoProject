@@ -359,6 +359,22 @@ public class Picture extends SimplePicture
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
+    Picture flower1 = new Picture("flower1.jpg");
+    Picture flower2 = new Picture("flower2.jpg");
+    this.copy(flower1,0,0);
+    this.copy(flower2,100,0);
+    this.copy(flower1,200,0);
+    Picture flowerNoBlue = new Picture(flower2);
+    flowerNoBlue.zeroBlue();
+    this.copy(flowerNoBlue,300,0);
+    this.copy(flower1,400,0);
+    this.copy(flower2,500,0);
+    this.mirrorVertical();
+    this.write("collage.jpg");
+  }
+  
+  public void createCollage2()
+  {
     Picture flower1 = new Picture("CumberlandIsland.jpg");
     Picture flower2 = new Picture("arch.jpg");
     Picture koala = new Picture ("koala.jpg");
@@ -373,7 +389,7 @@ public class Picture extends SimplePicture
     this.copy(koala, 450, 0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
-    this.write("collage.jpg");
+    this.write("collage2.jpg");
   }
   
   

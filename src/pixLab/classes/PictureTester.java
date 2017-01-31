@@ -95,6 +95,13 @@ public class PictureTester
     canvas.explore();
   }
   
+  public static void testCollage2()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.createCollage2();
+    canvas.explore();
+  }
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -158,7 +165,7 @@ public class PictureTester
 //    testGetAverageForColumn(0);
 //	  testMirrorGull();
 //	  testMirrorArms();
-	  testCollage();
+//	  testCollage();
 //	  testRandomize();
   }
 }
