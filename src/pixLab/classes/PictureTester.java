@@ -27,6 +27,12 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testValentinesMeme()
+  {
+	  Picture canvas = new Picture("egg.jpg");
+	  canvas.createValentinesMeme();
+  }
+  
   public static void testMirrorGull()
   {
 	  Picture seagull = new Picture("seagull.jpg");
@@ -176,8 +182,9 @@ public class PictureTester
 //    testGetAverageForColumn(0);
 //	  testMirrorGull();
 //	  testMirrorArms();
-//	  testCollage();
+//	  testCollage2();
 //	  testRandomize();
-	  fiveFilterImage();
+//	  fiveFilterImage();
+	  testValentinesMeme();
   }
 }

@@ -99,6 +99,18 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void zeroGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel col : rowArray)
+		  {
+			  col.setGreen(0);
+		  }
+	  }
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -373,21 +385,35 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  public void createValentinesMeme()
+  {
+	  Picture egg = new Picture("egg.jpg");
+	  egg.zeroGreen();
+	  egg.zeroBlue();
+	  egg.drawString("I want to #include you", 253, 25 );
+	  egg.drawString("as my Valentines", 253, 370);
+	  egg.explore();
+	  egg.write("ValentinesMeme.jpg");
+	  
+  }
+  
   public void createCollage2()
   {
-    Picture flower1 = new Picture("CumberlandIsland.jpg");
+    Picture main = new Picture("moon-surface.jpg");
+	Picture flower1 = new Picture("CumberlandIsland.jpg");
     Picture flower2 = new Picture("arch.jpg");
     Picture koala = new Picture ("koala.jpg");
-    this.copy(flower1,0,0);
-    this.copy(flower2,100,0);
-    this.copy(koala, 150, 0);
-    this.copy(flower1,200,0);
+    this.copy(main, 0, 0);
+    this.copy(flower1,0,0, 100, 100);
+    this.copy(flower2,100,0, 100, 100);
+    this.copy(koala, 150, 0, 100, 100);
+    this.copy(flower1,200,0, 100, 100);
     Picture flowerNoBlue = new Picture(flower2);
     flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(koala, 450, 0);
-    this.copy(flower2,500,0);
+    this.copy(flowerNoBlue,300,0, 200, 200);
+    this.copy(flower1,400,0, 200, 200);
+    this.copy(koala, 450, 0, 200, 200);
+    this.copy(flower2,500,0, 200, 200);
     this.mirrorVertical();
     this.write("collage2.jpg");
   }
