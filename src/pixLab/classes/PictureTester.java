@@ -126,6 +126,12 @@ public class PictureTester
 	  island.explore();
 	 
   }
+  public static void testGlitchArt()
+  {
+	  Picture island = new Picture("CumberlandIsland.jpg");
+	  island.glitchArt();
+	  island.explore();
+  }
   
   public static void grayScale()
   {
@@ -185,6 +191,7 @@ public class PictureTester
 //	  testCollage2();
 //	  testRandomize();
 //	  fiveFilterImage();
-	  testValentinesMeme();
+//	  testValentinesMeme();
+	  testGlitchArt();
   }
 }

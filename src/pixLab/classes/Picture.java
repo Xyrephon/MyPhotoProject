@@ -418,6 +418,18 @@ public class Picture extends SimplePicture
     this.write("collage2.jpg");
   }
   
+  public void glitchArt()
+  {
+	  Picture island = new Picture("CumberlandIsland.jpg");
+	  island.fullRandomBlue();
+	  island.mirrorHorizontalTopToBottom();
+	  island.zeroGreen();
+	  island.mirrorHorizontalBottomToTop();
+	  island.explore();
+	  island.write("GlitchArt.jpg");
+
+  }
+  
   
   
   /** Method to show large changes in color 
