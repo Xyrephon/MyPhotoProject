@@ -575,4 +575,92 @@ public class Picture extends SimplePicture
     beach.explore();
   }
   
+  public void encode(Picture hiddenPicture)
+  {
+  	Pixel [][] currentPicture = this.getPixels2D();
+  	Pixel [][] hiddenData = hiddenPicture.getPixels2D();
+  	
+  	Pixel hiddenPixel = null;
+  	Pixel currentPixel = null;
+  	
+  	for(int row = 0; row < currentPicture.length; row++)
+  	{
+  		for (int col = 0; col < currentPicture[0].length; col++)
+  		{
+  			hiddenPixel = hiddenData[row][col];
+  			currentPixel = currentPicture[row][col];
+  			
+  			if(hiddenPixel.getRed() == 255 && hiddenPixel.getGreen() == 255 && hiddenPixel.getBlue() == 255)
+  			{
+  				int currentRed = currentPixel.getRed();
+  				if (currentRed % 2 == 0)
+  				{
+  					currentPixel.setRed(currentRed + 1);
+  				}
+  			}
+  			else
+  			{
+  				int currentRed = currentPixel.getRed();
+  				if (currentRed % 2 != 0)
+  				{
+  					currentPixel.setRed(currentRed - 1);
+  				}
+  			}
+  		}
+  	}
+  	this.write("encrypted.png");
+	this.explore();
+  	
+  }
+
+  public void decode()
+  {
+	  Pixel [][] decoded = this.getPixels2D();
+	  Pixel currentPixel = null;
+	  
+	  for(int row = 0; row < decoded.length; row++)
+	  {
+		  for(int col = 0; col < decoded[0].length; col++)
+		  {
+			  //DFF00
+			  currentPixel = decoded[row][col];
+			  int currentRed = currentPixel.getRed();
+			  
+			  if (currentRed % 2 == 0)
+			  {
+				  currentPixel.setColor(new Color(127, 255, 0));
+			  }
+		  }
+	  }
+  	
+  }
+  
+  public void chromakey(Picture greenScreen, int red, int green, int blue)
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  Pixel [][] backgroundPicture = greenScreen.getPixels2D();
+	  
+	  Pixel greenPixel = null;
+	  Pixel currentPixel = null;
+	  
+	  for(int row = 0; row < currentPicture.length; row++)
+	  {
+		  for(int col = 0; col < currentPicture[0].length; col++)  
+		  {
+			  greenPixel = backgroundPicture[row][col];
+			  currentPixel = currentPicture[row][col];
+			  
+			  if(currentPixel.getRed() == red && currentPixel.getGreen() == green && currentPixel.getBlue() == blue)
+			  {
+				  currentPixel.setColor(greenPixel.getColor());
+			  }
+		  }
+	  }
+  }
+  
 } // this } is the end of class Picture, put all new methods before this
+
+
+
+
+

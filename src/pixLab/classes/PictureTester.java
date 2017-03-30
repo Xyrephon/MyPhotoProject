@@ -27,6 +27,28 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testChromakey()
+  {
+	  Picture greenScreen = new Picture("background.png");
+	  Picture source = new Picture("pacman.png");
+	
+	  source.explore();
+	  greenScreen.explore();
+	  source.chromakey(greenScreen, 255, 255, 255);
+	  source.explore();
+  }
+  
+  public static void testSteganography()
+  {
+	  Picture source = new Picture("base image.png");
+	  Picture hidden = new Picture("hidden.png");
+	  source.encode(hidden);
+	  source.explore();
+	  hidden.explore();
+	  source.decode();
+	  source.explore();
+  }
+  
   public static void testValentinesMeme()
   {
 	  Picture canvas = new Picture("egg.jpg");
@@ -180,7 +202,7 @@ public class PictureTester
 //    testCopy();
 //	  testEdgeDetection();
 //    testEdgeDetection2();
-//    testChromakey();
+    testChromakey();
 //    testEncodeAndDecode();
 //    testGetCountRedOverValue(250);
 //    testSetRedToHalfValueInTopHalf();
@@ -192,6 +214,7 @@ public class PictureTester
 //	  testRandomize();
 //	  fiveFilterImage();
 //	  testValentinesMeme();
-	  testGlitchArt();
+//	  testGlitchArt();
+//	  testSteganography();
   }
 }
