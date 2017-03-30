@@ -650,7 +650,7 @@ public class Picture extends SimplePicture
 			  greenPixel = backgroundPicture[row][col];
 			  currentPixel = currentPicture[row][col];
 			  
-			  if(currentPixel.getRed() == red && currentPixel.getGreen() == green && currentPixel.getBlue() == blue)
+			  if(currentPixel.getRed() < red + 10 && currentPixel.getRed() > red - 10 && currentPixel.getGreen() < green + 10 && currentPixel.getGreen() > green - 10 && currentPixel.getBlue() < blue + 10 && currentPixel.getBlue() > blue - 10)
 			  {
 				  currentPixel.setColor(greenPixel.getColor());
 			  }
